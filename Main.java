@@ -1,77 +1,29 @@
+import CIE.Student;
+import CIE.Internals;
+import SEE.Externals;
 import java.util.Scanner;
-abstract class Shape 
-{
-	float dim1, dim2;
-	Shape() {}		
-	abstract void printArea();
-}
-
-class Rectangle extends Shape 
-{
-	Rectangle() {}
-	void getd()
-	{
+public class Main {
+	public static void main(String args[]) {
 		Scanner sc = new Scanner(System.in);
-		System.out.println("Enter length of rectangle:");
-		dim1=sc.nextFloat();
-		System.out.println("Enter breadth of rectangle:");
-		dim2=sc.nextFloat();
+		System.out.println("Enter the number of students whose details you want to enter");
+		int n = sc.nextInt();
+		Internals[] i1 = new Internals[n];
+		Externals[] e1 = new Externals[n];
+		for(int i=0;i<n;i++) {
+			System.out.println("Student "+(i+1)+" details:");
+			e1[i] = new Externals();
+			i1[i] = new Internals();
+			e1[i].getd();
+			i1[i].getMarks();
+			e1[i].getMarks();
+		}
+		for(int i=0;i<n;i++) {
+			e1[i].display();
+			e1[i].calcTotalMarks(i1[i]);
+		}
+
 	}
-
-	void printArea() 
-	{
-        	double area = dim1 * dim2;
-        	System.out.println("Area of Rectangle: " + area);
-    	}
 }
-
-class Triangle extends Shape 
-{
-	Triangle() {}	
-	void getd()
-	{
-		Scanner sc = new Scanner(System.in);
-		System.out.println("Enter height of triangle:");
-		dim1=sc.nextFloat();
-		System.out.println("Enter base of triangle:");
-		dim2=sc.nextFloat();
-	}
-	void printArea() 
-	{
-        	double area = 0.5 * dim1 * dim2;
-        	System.out.println("Area of Triangle: " + area);
-    	}
-}
-
-class Circle extends Shape 
-{
-    Circle() {}
-	void getd()
-	{
-		Scanner sc = new Scanner(System.in);
-		System.out.println("Enter radius of circle:");
-		dim1=sc.nextFloat();
-		dim2=0.0f;
-	}
-	void printArea() 
-	{
-        	double area = Math.PI * dim1 * dim1;
-        	System.out.println("Area of Circle: " + area);
-    	}
-}
-
-class Main
-{
-    public static void main(String[] args) 
-	{
-        	Rectangle rect = new Rectangle();
-        	Triangle tri = new Triangle();
-        	Circle circ = new Circle();
-		rect.getd();
-		tri.getd();
-		circ.getd();
-        	rect.printArea();
-        	tri.printArea();
-        	circ.printArea();
-    	}
-}
+			
+			
+			
